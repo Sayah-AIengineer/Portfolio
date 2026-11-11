@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>:root{color-scheme:light}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Ogiji Amarachi Mercy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: left-aligned editorial column. Hero pairs a headline with a profile record; sections use a label rail on the left and content on the right, collapsing to one column on phones. */
+:root {
+  --bg: #F2F5F3;
+  --surface: #E7EEEA;
+  --fg: #13201D;
+  --muted: #475B56;
+  --line: #C9D6D1;
+  --accent: #0A6B5A;
+  --accent-fg: #FFFFFF;
+  --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1614;
+    --surface: #16211F;
+    --fg: #E3ECE9;
+    --muted: #9DB3AD;
+    --line: #2A3A36;
+    --accent: #5ED6B9;
+    --accent-fg: #0E1614;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1614;
+  --surface: #16211F;
+  --fg: #E3ECE9;
+  --muted: #9DB3AD;
+  --line: #2A3A36;
+  --accent: #5ED6B9;
+  --accent-fg: #0E1614;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  padding-block: 20px 48px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.wrap { max-width: 1040px; margin: 0 auto; }
+a { color: var(--accent); text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; margin: 0; line-height: 1.15; }
+p { margin: 0; }
+ul { margin: 0; padding: 0; list-style: none; }
+
+.mono-label {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* Top bar */
+.top {
+  display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center;
+  gap: 8px 24px; padding-bottom: 16px; border-bottom: 1px solid var(--line);
+}
+.top .who { font-family: var(--font-display); font-weight: 700; font-size: 1.05rem; }
+.top nav { display: flex; flex-wrap: wrap; gap: 4px 20px; }
+.top nav a { color: var(--fg); text-decoration: none; font-size: 0.92rem; }
+.top nav a:hover { color: var(--accent); text-decoration: underline; }
+
+/* Hero */
+.hero {
+  display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+  gap: 40px 56px; padding-block: 56px 48px; align-items: start;
+}
+.hero h1 {
+  font-weight: 700; font-size: clamp(2.2rem, 5.6vw, 3.9rem); letter-spacing: -0.02em; margin-top: 16px;
+}
+.hero h1 em { font-style: normal; color: var(--accent); }
+.hero .lede { margin-top: 20px; max-width: 58ch; color: var(--muted); font-size: 1.06rem; }
+.actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px; font: inherit; font-size: 0.95rem; font-weight: 500;
+  padding: 10px 16px; border-radius: 6px; border: 1px solid var(--line); background: transparent;
+  color: var(--fg); text-decoration: none; cursor: pointer; min-height: 44px;
+}
+.btn:hover { border-color: var(--accent); color: var(--accent); }
+.btn.primary { background: var(--accent); color: var(--accent-fg); border-color: var(--accent); }
+.btn.primary:hover { color: var(--accent-fg); filter: brightness(1.08); }
+
+.record { background: var(--surface); border-radius: 8px; padding: 20px 22px; min-width: 0; }
+.record h2 { font-size: 0.78rem; font-family: var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 500; margin-bottom: 12px; }
+.record dl { margin: 0; display: grid; gap: 14px; }
+.record dt { font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+.record dd { margin: 2px 0 0; font-weight: 500; overflow-wrap: anywhere; }
+
+/* Sections */
+section { border-top: 1px solid var(--line); padding-block: 44px; display: grid; grid-template-columns: 180px minmax(0, 1fr); gap: 20px 40px; }
+section > h2 { font-family: var(--font-mono); font-weight: 500; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); padding-top: 6px; }
+.stack { display: grid; gap: 36px; min-width: 0; }
+
+.role h3 { font-size: 1.3rem; font-weight: 700; }
+.role .org { color: var(--muted); margin-top: 4px; }
+.role ul { margin-top: 14px; display: grid; gap: 8px; max-width: 68ch; }
+.role li { padding-left: 18px; position: relative; }
+.role li::before { content: ""; position: absolute; left: 0; top: 0.72em; width: 8px; height: 1px; background: var(--accent); }
+
+/* Hosting path */
+.path { background: var(--surface); border-radius: 8px; padding: 20px 22px; min-width: 0; }
+.path p { color: var(--muted); font-size: 0.95rem; margin-top: 6px; max-width: 62ch; }
+.path ol { list-style: none; margin: 18px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px 8px; align-items: center; }
+.path li { display: inline-flex; align-items: center; gap: 8px; }
+.path li span.step { font-family: var(--font-mono); font-size: 0.85rem; padding: 6px 10px; border: 1px solid var(--line); border-radius: 4px; background: var(--bg); }
+.path li:not(:last-child)::after { content: "→"; color: var(--accent); font-family: var(--font-mono); }
+
+/* Projects */
+.project { display: grid; grid-template-columns: minmax(0, 1fr); gap: 6px; padding-bottom: 28px; border-bottom: 1px solid var(--line); }
+.project:last-child { border-bottom: 0; padding-bottom: 0; }
+.project h3 { font-size: 1.2rem; }
+.project p { max-width: 66ch; color: var(--muted); }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.tag { font-family: var(--font-mono); font-size: 0.76rem; padding: 3px 8px; border-radius: 4px; border: 1px solid var(--line); color: var(--muted); }
+
+/* Skills */
+.skills { display: grid; gap: 22px; }
+.skill-row { display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 8px 24px; }
+.skill-row h3 { font-family: var(--font-body); font-size: 0.95rem; font-weight: 600; padding-top: 4px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { font-size: 0.9rem; padding: 4px 10px; border-radius: 4px; background: var(--surface); }
+
+.plain-list { display: grid; gap: 16px; max-width: 68ch; }
+.plain-list strong { font-weight: 600; }
+.plain-list span { color: var(--muted); }
+
+/* Contact */
+.contact-grid { display: grid; gap: 14px; }
+.contact-line { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; }
+.contact-line .k { font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); min-width: 84px; }
+.contact-line .v { font-weight: 500; overflow-wrap: anywhere; }
+.status { font-size: 0.85rem; color: var(--accent); min-height: 1.2em; }
+
+footer { border-top: 1px solid var(--line); padding-top: 20px; color: var(--muted); font-size: 0.88rem; }
+
+@media (max-width: 760px) {
+  .hero { grid-template-columns: minmax(0, 1fr); padding-block: 36px 32px; }
+  section { grid-template-columns: minmax(0, 1fr); padding-block: 32px; gap: 14px; }
+  .skill-row { grid-template-columns: minmax(0, 1fr); gap: 6px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .btn, .top nav a { transition: color 0.15s ease, border-color 0.15s ease; }
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="top">
+    <span class="who">Ogiji Amarachi Mercy</span>
+    <nav aria-label="Sections">
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="hero">
+      <div>
+        <p class="mono-label">Software Engineering · Data Analytics · Web &amp; Technology</p>
+        <h1>Software engineering student who works with <em>data</em> and the web.</h1>
+        <p class="lede">I study Software Engineering at Delta State University and hold a Data Analytics certification from TechCrush. My hands-on work covers WordPress sites, web hosting, DNS and SSL troubleshooting, and data projects. I like learning fast and building practical solutions.</p>
+        <div class="actions">
+          <a class="btn primary" href="#contact">Get in touch</a>
+          <a class="btn" href="https://github.com/Sayah-AIengineer" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn" href="https://ng.linkedin.com/in/ogiji-amarachi-b2264330a" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+      <aside class="record" aria-label="Profile summary">
+        <h2>Profile</h2>
+        <dl>
+          <div><dt>Studying</dt><dd>B.Sc. Software Engineering, Delta State University</dd></div>
+          <div><dt>Certified</dt><dd>Data Analytics, TechCrush</dd></div>
+          <div><dt>Industrial training</dt><dd>Web hosting &amp; systems, Spectralink (SIWES)</dd></div>
+          <div><dt>Based in</dt><dd>Edo State, Nigeria</dd></div>
+        </dl>
+      </aside>
+    </div>
+
+    <section id="experience">
+      <h2>Experience</h2>
+      <div class="stack">
+        <article class="role">
+          <h3>Technology / Web Hosting &amp; Systems Training</h3>
+          <p class="org">Spectralink · SIWES / Industrial Training</p>
+          <ul>
+            <li>Worked through website deployment workflows, including domain and server configuration.</li>
+            <li>Gained practical exposure to Cloudflare, Virtualmin, WordPress, Elementor, Astra and Git, and to troubleshooting live websites.</li>
+            <li>Investigated hosting, DNS, SSL and database issues on database-connected WordPress sites.</li>
+            <li>Supported practical technology solutions for business and web-hosting needs.</li>
+          </ul>
+        </article>
+
+        <div class="path" role="group" aria-label="Hosting stack I worked with">
+          <p class="mono-label">The stack I worked with at Spectralink</p>
+          <p>A site only loads when every layer behaves. These are the layers I learned to check when one of them broke.</p>
+          <ol>
+            <li><span class="step">Domain</span></li>
+            <li><span class="step">Cloudflare DNS</span></li>
+            <li><span class="step">Virtualmin server</span></li>
+            <li><span class="step">SSL (Let’s Encrypt)</span></li>
+            <li><span class="step">WordPress + database</span></li>
+          </ol>
+        </div>
+
+        <article class="role">
+          <h3>Data Analytics Training</h3>
+          <p class="org">TechCrush</p>
+          <ul>
+            <li>Completed a Data Analytics course covering practical analysis concepts and tools.</li>
+            <li>Built a foundation in working with data, extracting insights and presenting findings.</li>
+            <li>Applied analytical thinking to technology and real-world data projects.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="stack">
+        <article class="project">
+          <h3>COVID-19 Big Data Project</h3>
+          <p>A cloud-based data science task on a large public dataset, focused on pulling insights out of data at scale.</p>
+          <div class="tags"><span class="tag">Data science</span><span class="tag">Python</span><span class="tag">Google Colab</span></div>
+        </article>
+        <article class="project">
+          <h3>School Library Digital Repository</h3>
+          <p>A concept for an offline university library repository with faculty, department, book catalogue and book-detail views, designed to reduce reliance on manual information processes.</p>
+          <div class="tags"><span class="tag">System design</span><span class="tag">Databases</span><span class="tag">Offline-first</span></div>
+        </article>
+        <article class="project">
+          <h3>University Student Platform</h3>
+          <p>A concept for a student-focused platform that improves communication, interaction and access to school-related information.</p>
+          <div class="tags"><span class="tag">Product concept</span><span class="tag">Web</span></div>
+        </article>
+        <article class="project">
+          <h3>Supermarket ERP</h3>
+          <p>Requirements and system component planning for an ERP solution covering core supermarket business processes.</p>
+          <div class="tags"><span class="tag">Requirements</span><span class="tag">ERP</span><span class="tag">System planning</span></div>
+        </article>
+        <article class="project">
+          <h3>Web Hosting and WordPress Projects</h3>
+          <p>Website setup, hosting, domain configuration, and SSL and DNS troubleshooting on content-management systems.</p>
+          <div class="tags"><span class="tag">WordPress</span><span class="tag">Hosting</span><span class="tag">DNS</span><span class="tag">SSL</span></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+      <div class="skills">
+        <div class="skill-row">
+          <h3>Programming &amp; data</h3>
+          <div class="chips"><span class="chip">Python</span><span class="chip">SQL</span><span class="chip">JavaScript (beginner to intermediate)</span><span class="chip">Data analysis fundamentals</span><span class="chip">Basic machine learning</span></div>
+        </div>
+        <div class="skill-row">
+          <h3>Web development</h3>
+          <div class="chips"><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span><span class="chip">WordPress</span><span class="chip">Elementor</span><span class="chip">Astra</span><span class="chip">Responsive design</span></div>
+        </div>
+        <div class="skill-row">
+          <h3>Systems &amp; hosting</h3>
+          <div class="chips"><span class="chip">Cloudflare</span><span class="chip">Virtualmin</span><span class="chip">Web hosting</span><span class="chip">DNS</span><span class="chip">SSL / Let’s Encrypt</span><span class="chip">Basic database troubleshooting</span></div>
+        </div>
+        <div class="skill-row">
+          <h3>Data &amp; productivity</h3>
+          <div class="chips"><span class="chip">Microsoft Excel</span><span class="chip">Microsoft Office</span><span class="chip">Reporting and data presentation</span></div>
+        </div>
+        <div class="skill-row">
+          <h3>Tools</h3>
+          <div class="chips"><span class="chip">Git</span><span class="chip">GitHub</span><span class="chip">Google Colab</span><span class="chip">VS Code</span></div>
+        </div>
+        <div class="skill-row">
+          <h3>IT &amp; networking</h3>
+          <div class="chips"><span class="chip">Hardware and networking fundamentals</span><span class="chip">Technical troubleshooting</span><span class="chip">System administration fundamentals</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <h2>Education</h2>
+      <div class="stack">
+        <ul class="plain-list">
+          <li><strong>B.Sc. Software Engineering</strong><br><span>Delta State University, Nigeria. Undergraduate. Focus on software development, data, databases, web technologies and computing.</span></li>
+          <li><strong>Data Analytics</strong><br><span>TechCrush Scholars / TechCrush</span></li>
+          <li><strong>Rise with TechCrush</strong><br><span>TechCrush Scholars technology learning programme, completed</span></li>
+          <li><strong>Practical training</strong><br><span>Web Design (WordPress), Hardware &amp; Networking, and Microsoft Office</span></li>
+        </ul>
+        <div>
+          <h3 style="font-size:1.05rem">Community</h3>
+          <p style="margin-top:8px;max-width:66ch;color:var(--muted)">Active in NACOS (National Association of Computing Students). I contribute ideas for technology events, competitions, seminars, symposiums and student projects that last.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <div class="contact-grid">
+        <p style="max-width:60ch;color:var(--muted)">I am interested in roles across software development, data and technology operations. References are available on request.</p>
+        <div class="contact-line">
+          <span class="k">Email</span>
+          <span class="v" id="email-text">amarachiogiji@gmail.com</span>
+          <button class="btn" type="button" id="copy-email">Copy email</button>
+          <span class="status" id="copy-status" role="status" aria-live="polite"></span>
+        </div>
+        <div class="contact-line">
+          <span class="k">GitHub</span>
+          <a class="v" href="https://github.com/Sayah-AIengineer" target="_blank" rel="noopener">github.com/Sayah-AIengineer</a>
+        </div>
+        <div class="contact-line">
+          <span class="k">LinkedIn</span>
+          <a class="v" href="https://ng.linkedin.com/in/ogiji-amarachi-b2264330a" target="_blank" rel="noopener">linkedin.com/in/ogiji-amarachi-b2264330a</a>
+        </div>
+        <div class="contact-line">
+          <span class="k">Location</span>
+          <span class="v">Edo State, Nigeria</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>Ogiji Amarachi Mercy · Software Engineering Student · Data Analytics · Web &amp; Technology</footer>
+</div>
+
+<script>
+(function () {
+  var btn = document.getElementById("copy-email");
+  var text = document.getElementById("email-text");
+  var status = document.getElementById("copy-status");
+  function selectText() {
+    try {
+      var r = document.createRange();
+      r.selectNodeContents(text);
+      var s = window.getSelection();
+      s.removeAllRanges();
+      s.addRange(r);
+    } catch (e) {}
+  }
+  function fallback() {
+    selectText();
+    status.textContent = "Email selected. Copy it with your device's copy command.";
+  }
+  btn.addEventListener("click", function () {
+    try {
+      navigator.clipboard.writeText(text.textContent.trim()).then(function () {
+        status.textContent = "Copied";
+        setTimeout(function () { status.textContent = ""; }, 2500);
+      }, fallback);
+    } catch (e) { fallback(); }
+  });
+})();
+</script>
+
+</body>
+</html>
